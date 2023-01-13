@@ -1,0 +1,15 @@
+.button {
+    width: 60px;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid
+}
+
+.button:nth-last-child(n+2) {
+    margin-right: 7px;
+}
+
+.button:hover {
+    background-color: bisque;
+}
