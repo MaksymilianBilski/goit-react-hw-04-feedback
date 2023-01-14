@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
+import { useAppContext } from 'components/App';
 import PropTypes from 'prop-types';
 import css from './FeedbackOptions.module.css';
 
-export class FeedbackOptions extends Component {
-  render() {
-    return this.props.options.map(btn => (
-      <button
-        className={css.button}
-        type="button"
-        onClick={this.props.buttonClick}
-      >
-        {btn}
-      </button>
-    ));
-  }
-}
+export const FeedbackOptions = () => {
+  const { options, buttonClick } = useAppContext();
+  return options.map(btn => (
+    <button className={css.button} type="button" onClick={buttonClick}>
+      {btn}
+    </button>
+  ));
+};
 
 FeedbackOptions.propTypes = {
   options: PropTypes.array,

@@ -1,7 +1,11 @@
+import { useContext, createContext } from 'react';
 import { Statistics } from './Statistics/Statistics';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Section } from './Section/Section';
 import { useState } from 'react';
+
+export const appContext = createContext();
+export const useAppContext = () => useContext(appContext);
 
 export const App = () => {
   const [stat, setStat] = useState({ good: 0, neutral: 0, bad: 0 });
@@ -35,16 +39,27 @@ export const App = () => {
 
   return (
     <div>
-      <Section title="Please leave feedback">
-        <FeedbackOptions buttonClick={buttonClick} options={options} />
-      </Section>
-      <Section title="Statistics">
-        <Statistics
-          stats={stat}
-          positive={countPositiveFeedbackPercentage()}
-          total={countTotalFeedback()}
-        />
-      </Section>
+      <appContext.Provider
+        value={{
+          add,
+          buttonClick,
+          countPositiveFeedbackPercentage,
+          countTotalFeedback,
+          stat,
+          options,
+        }}
+      >
+        <Section title="Please leave feedback">
+          <FeedbackOptions buttonClick={buttonClick} options={options} />
+        </Section>
+        <Section title="Statistics">
+          <Statistics
+            stats={stat}
+            positive={countPositiveFeedbackPercentage()}
+            total={countTotalFeedback()}
+          />
+        </Section>
+      </appContext.Provider>
     </div>
   );
 };

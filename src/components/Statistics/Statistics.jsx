@@ -1,25 +1,30 @@
-import React, { Component } from 'react';
+import { useAppContext } from 'components/App';
 import { Notification } from 'components/Notification/Notification';
 import css from './Statistics.module.css';
 import PropTypes from 'prop-types';
 
-export class Statistics extends Component {
-  render() {
-    const { stats, total, positive } = this.props;
-    if (this.props.total === undefined) {
-      return <Notification />;
-    } else
-      return (
-        <ul className={css.list}>
-          <li>good: {stats.good}</li>
-          <li>neutral: {stats.neutral}</li>
-          <li>bad: {stats.bad}</li>
-          <li>Total: {total}</li>
-          <li>Positive: {isNaN(positive) ? 0 : positive} %</li>
-        </ul>
-      );
-  }
-}
+export const Statistics = () => {
+  const { stat, countPositiveFeedbackPercentage, countTotalFeedback } =
+    useAppContext();
+  if (countTotalFeedback === undefined) {
+    return <Notification />;
+  } else
+    return (
+      <ul className={css.list}>
+        <li>good: {stat.good}</li>
+        <li>neutral: {stat.neutral}</li>
+        <li>bad: {stat.bad}</li>
+        <li>Total: {countTotalFeedback}</li>
+        <li>
+          Positive:{' '}
+          {isNaN(countPositiveFeedbackPercentage())
+            ? 0
+            : countPositiveFeedbackPercentage()}{' '}
+          %
+        </li>
+      </ul>
+    );
+};
 
 Statistics.propTypes = {
   stats: PropTypes.shape({
