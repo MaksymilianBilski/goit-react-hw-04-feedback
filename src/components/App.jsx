@@ -1,11 +1,9 @@
-import { useContext, createContext } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Statistics } from './Statistics/Statistics';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Section } from './Section/Section';
-import { useState } from 'react';
-
-export const appContext = createContext();
-export const useAppContext = () => useContext(appContext);
+import { FeedbackContext } from './context/FeedbackContext/FeedbackContext';
 
 export const App = () => {
   const [stat, setStat] = useState({ good: 0, neutral: 0, bad: 0 });
@@ -39,7 +37,7 @@ export const App = () => {
 
   return (
     <div>
-      <appContext.Provider
+      <FeedbackContext.Provider
         value={{
           add,
           buttonClick,
@@ -59,7 +57,15 @@ export const App = () => {
             total={countTotalFeedback()}
           />
         </Section>
-      </appContext.Provider>
+      </FeedbackContext.Provider>
     </div>
   );
+};
+FeedbackContext.Provider.propTypes = {
+  add: PropTypes.func,
+  buttonClick: PropTypes.func,
+  countPositiveFeedbackPercentage: PropTypes.func,
+  countTotalFeedback: PropTypes.func,
+  stat: PropTypes.object,
+  options: PropTypes.array,
 };

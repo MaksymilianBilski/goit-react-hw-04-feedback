@@ -1,16 +1,17 @@
-import { useAppContext } from 'components/App';
-import PropTypes from 'prop-types';
+import { useFeedbackContext } from 'components/context/FeedbackContext/FeedbackContext';
 import css from './FeedbackOptions.module.css';
+import { nanoid } from 'nanoid';
 
 export const FeedbackOptions = () => {
-  const { options, buttonClick } = useAppContext();
+  const { options, buttonClick } = useFeedbackContext();
   return options.map(btn => (
-    <button className={css.button} type="button" onClick={buttonClick}>
+    <button
+      key={nanoid()}
+      className={css.button}
+      type="button"
+      onClick={buttonClick}
+    >
       {btn}
     </button>
   ));
-};
-
-FeedbackOptions.propTypes = {
-  options: PropTypes.array,
 };

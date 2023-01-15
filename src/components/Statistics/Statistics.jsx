@@ -1,11 +1,10 @@
-import { useAppContext } from 'components/App';
+import { useFeedbackContext } from 'components/context/FeedbackContext/FeedbackContext';
 import { Notification } from 'components/Notification/Notification';
 import css from './Statistics.module.css';
-import PropTypes from 'prop-types';
 
 export const Statistics = () => {
   const { stat, countPositiveFeedbackPercentage, countTotalFeedback } =
-    useAppContext();
+    useFeedbackContext();
   if (countTotalFeedback === undefined) {
     return <Notification />;
   } else
@@ -24,14 +23,4 @@ export const Statistics = () => {
         </li>
       </ul>
     );
-};
-
-Statistics.propTypes = {
-  stats: PropTypes.shape({
-    good: PropTypes.number,
-    bad: PropTypes.number,
-    neutral: PropTypes.number,
-  }),
-  total: PropTypes.number,
-  positive: PropTypes.number,
 };
