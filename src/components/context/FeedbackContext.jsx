@@ -36,7 +36,6 @@ const FeedbackContextProvider = ({ children }) => {
     <FeedbackContext.Provider
       value={{
         addFeedback,
-        add,
         countPositiveFeedbackPercentage,
         countTotalFeedback,
         options,
