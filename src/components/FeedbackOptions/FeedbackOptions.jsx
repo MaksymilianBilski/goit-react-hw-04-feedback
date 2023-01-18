@@ -1,15 +1,15 @@
-import { useFeedbackContext } from 'components/context/FeedbackContext/FeedbackContext';
+import { useFeedbackContext } from 'components/context/FeedbackContext';
 import css from './FeedbackOptions.module.css';
 import { nanoid } from 'nanoid';
 
 export const FeedbackOptions = () => {
-  const { options, buttonClick } = useFeedbackContext();
+  const { options, addFeedback } = useFeedbackContext();
   return options.map(btn => (
     <button
       key={nanoid()}
       className={css.button}
       type="button"
-      onClick={buttonClick}
+      onClick={addFeedback}
     >
       {btn}
     </button>

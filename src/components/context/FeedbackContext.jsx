@@ -28,14 +28,14 @@ const FeedbackContextProvider = ({ children }) => {
       return { ...prevState, [evt]: prevState[evt] + 1 };
     });
   };
-  const buttonClick = evt => {
+  const addFeedback = evt => {
     const btnName = evt.target.textContent;
     add(btnName);
   };
   return (
     <FeedbackContext.Provider
       value={{
-        buttonClick,
+        addFeedback,
         add,
         countPositiveFeedbackPercentage,
         countTotalFeedback,
@@ -49,11 +49,11 @@ const FeedbackContextProvider = ({ children }) => {
 };
 FeedbackContextProvider.propTypes = {
   add: PropTypes.func,
-  buttonClick: PropTypes.func,
+  addFeedback: PropTypes.func,
   countPositiveFeedbackPercentage: PropTypes.func,
   countTotalFeedback: PropTypes.func,
-  stat: PropTypes.object,
-  options: PropTypes.array,
+  stat: PropTypes.objectOf(PropTypes.number),
+  options: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default FeedbackContextProvider;

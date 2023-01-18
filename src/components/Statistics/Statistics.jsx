@@ -1,4 +1,4 @@
-import { useFeedbackContext } from 'components/context/FeedbackContext/FeedbackContext';
+import { useFeedbackContext } from 'components/context/FeedbackContext';
 import { Notification } from 'components/Notification/Notification';
 import css from './Statistics.module.css';
 

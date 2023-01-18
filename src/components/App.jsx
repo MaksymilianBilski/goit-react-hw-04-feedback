@@ -2,11 +2,11 @@ import { Statistics } from './Statistics/Statistics';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Section } from './Section/Section';
 import { Notification } from './Notification/Notification';
-import { useFeedbackContext } from './context/FeedbackContext/FeedbackContext';
+import { useFeedbackContext } from './context/FeedbackContext';
 
 export const App = () => {
   const {
-    buttonClick,
+    addFeedback,
     options,
     stat,
     countPositiveFeedbackPercentage,
@@ -15,7 +15,7 @@ export const App = () => {
   return (
     <div>
       <Section title="Please leave feedback">
-        <FeedbackOptions buttonClick={buttonClick} options={options} />
+        <FeedbackOptions addFeedback={addFeedback} options={options} />
       </Section>
       <Section title="Statistics">
         {Object.values(stat).some(el => el > 0) ? (

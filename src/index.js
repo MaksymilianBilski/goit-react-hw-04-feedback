@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import FeedbackContextProvider from 'components/context/FeedbackContext/FeedbackContext';
+import FeedbackContextProvider from 'components/context/FeedbackContext';
 import { App } from 'components/App';
 import './index.css';
 
