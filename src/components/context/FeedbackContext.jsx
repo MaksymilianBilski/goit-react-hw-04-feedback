@@ -7,6 +7,7 @@ export const useFeedbackContext = () => useContext(FeedbackContext);
 const FeedbackContextProvider = ({ children }) => {
   const [stat, setStat] = useState({ good: 0, neutral: 0, bad: 0 });
   const options = Object.keys(stat);
+
   const countTotalFeedback = () => {
     if (Object.values(stat).some(val => val > 0)) {
       let total = Object.values(stat).reduce((pV, num) => {
@@ -15,6 +16,7 @@ const FeedbackContextProvider = ({ children }) => {
       return total;
     }
   };
+
   const countPositiveFeedbackPercentage = () => {
     const sum = Object.values(stat).reduce((pV, num) => {
       return (pV += num);
@@ -28,9 +30,11 @@ const FeedbackContextProvider = ({ children }) => {
       return { ...prevState, [evt]: prevState[evt] + 1 };
     });
   };
+
   const addFeedback = option => {
     add(option);
   };
+
   return (
     <FeedbackContext.Provider
       value={{
@@ -45,6 +49,7 @@ const FeedbackContextProvider = ({ children }) => {
     </FeedbackContext.Provider>
   );
 };
+
 FeedbackContextProvider.propTypes = {
   add: PropTypes.func,
   addFeedback: PropTypes.func,
