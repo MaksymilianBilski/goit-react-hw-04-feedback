@@ -15,7 +15,7 @@ export const Statistics = () => {
         <li>bad: {stat.bad}</li>
         <li>Total: {countTotalFeedback}</li>
         <li>
-          Positive:{' '}
+          Positive:
           {isNaN(countPositiveFeedbackPercentage())
             ? 0
             : countPositiveFeedbackPercentage()}{' '}
