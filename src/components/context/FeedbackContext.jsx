@@ -28,9 +28,8 @@ const FeedbackContextProvider = ({ children }) => {
       return { ...prevState, [evt]: prevState[evt] + 1 };
     });
   };
-  const addFeedback = evt => {
-    const btnName = evt.target.textContent;
-    add(btnName);
+  const addFeedback = option => {
+    add(option);
   };
   return (
     <FeedbackContext.Provider

@@ -9,7 +9,7 @@ export const FeedbackOptions = () => {
       key={nanoid()}
       className={css.button}
       type="button"
-      onClick={addFeedback}
+      onClick={() => addFeedback(btn)}
     >
       {btn}
     </button>
